@@ -1,0 +1,89 @@
+﻿@model List<string>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .Photo-Container {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+
+    .photo-bottom {
+        position: absolute;
+        bottom: 1%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .display-custom {
+        font-size: 2.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+
+    #CuriosityPhoto:hover {
+        cursor: pointer
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4 text-white">Welcome To NASA API GUI</h1>
+    <p class="text-white">This Application will take data from the NASA API and make it more user friendly.</p>
+</div>
+
+<div class="mt-5 d-flex justify-content-center">
+    <div id="carouselExampleSlidesOnly" class="carousel w-50 slide border border-radius" data-interval="4000" data-ride="carousel">
+        <div id="CuriosityPhoto" class="carousel-inner" style="background-color: black;">
+            <div class="Photo-Container">
+                @{
+                    bool IsFirst = true;
+                    foreach (var item in Model)
+                    {
+                        if (IsFirst)
+                        {
+                            //One needed to be active while the others need to not be active. Look in class.
+                            <div class="carousel-item active">
+                                <img class="border-radius" style="width: 600px; height: 600px; overflow:hidden;" src="@item" alt="First slide">
+                            </div>
+                            IsFirst = false;
+                        }
+                        else
+                        {
+                            <div class="carousel-item">
+                                <img class="border-radius" style="width: 600px; height: 600px; overflow:hidden;" src="@item" alt="First slide">
+                            </div>
+                        }
+
+                    }
+                }
+            </div>
+            <div class="photo-bottom" id="CuriosityInfo">
+                <h4 class="text-white text-center display-custom">Photos from Curiosity</h4>
+                <p class="text-white mb-0 text-center">Launch date: November 26 2011, Landing date: August 6 2012</p>
+                <p class="text-white mb-0 text-center">Curiosity's two-year mission was extended indefinitely</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var isCuriosityInfoHidden = false;
+
+    //Close info at the bottom of the carousel if the user just wants photos clicks again to bring it back
+    $("#CuriosityPhoto").click(function () {
+        if (isCuriosityInfoHidden) {
+            isCuriosityInfoHidden = false
+            document.getElementById("CuriosityInfo").style = "display: block";
+        }
+        else {
+            document.getElementById("CuriosityInfo").style = "display: none";
+            isCuriosityInfoHidden = true
+        }
+        
+    });
+</script>
+

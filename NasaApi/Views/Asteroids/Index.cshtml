@@ -1,0 +1,73 @@
+﻿@model List<NEOInfo>
+
+
+<form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="form-group">
+                    <label class="text-white" id="StartDateLabel" for="DatePickerStartDate">Start Date</label>
+                    <div id="StartDate" class="form-group">
+                        <input id="DatePickerStartDate" type="text" class="form-control" placeholder="Click for Calender" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label class="text-white" id="EndDateLabel" for="DatePickerEndDate">End Date</label>
+                    <div id="EndDate" class="form-group">
+                        <input id="DatePickerEndDate" type="text" class="form-control" placeholder="Click for Calender" />
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-4">
+                <button type="button" id="Submit" class="btn btn-light">Submit</button>
+            </div>
+            <div class="col-4">
+                @*Here so the submit button is on the left*@
+            </div>
+        </div>
+    </div>
+</form>
+
+<div id="AsteroidArea">
+
+</div>
+
+<script>
+
+    $(function () {
+        $("#DatePickerStartDate").datepicker();
+        $("#DatePickerEndDate").datepicker();
+    });
+
+    document.getElementById("Submit").addEventListener("click", function () {
+
+        var StartDate = new Date(document.getElementById("DatePickerStartDate").value.trim());
+        var EndDate = new Date(document.getElementById("DatePickerEndDate").value.trim());
+
+        var diffInDays = EndDate.getDate() - StartDate.getDate();
+
+        if (EndDate < StartDate) {
+            alert("End date can not be less than start date.")
+            return;
+        }
+
+        if (diffInDays > 7) {
+            alert("Selection has to be a week or less.")
+            return;
+        }
+
+        document.getElementById("AsteroidArea").innerHTML = "";
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetAsteroids", "Asteroids")",
+            data: { StartDateString: document.getElementById("DatePickerStartDate").value.trim(), EndDateString: document.getElementById("DatePickerEndDate").value.trim() },
+            success: function (data) {
+                $("#AsteroidArea").html(data);
+            }
+        });
+    });
+</script>

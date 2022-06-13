@@ -1,0 +1,109 @@
+﻿@model List<NEOInfo>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-5 pr-1 pl-1 pb-2">
+                <div class="login-card mt-5">
+                    <div class="card">
+                        <div class="card-header nav-dark text-white">
+                            Name @item.Name
+                        </div>
+                        <div class="card-body body-dark">
+                            <div class="row justify-content-center">
+
+                                <div class="col text-white">
+                                    Id: @item.Id
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col text-white">
+                                    Neo Reference Id: @item.NeoReferenceId
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col">
+                                    <a href="@item.NasaJPLUrl" target="_blank">Nasa JPL Url</a>
+                                    <div class="w-100"></div>
+                                    <span class="text-white">--------------------------</span>
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col text-white">
+                                    Estimated Diameter In Meters Min: @item.EstimatedDiameterInMetersMin
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col text-white">
+                                    Estimated Diameter In Meters Max: @item.EstimatedDiameterInMetersMax
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col text-white">
+                                    Velocity (MPH): @item.MilesPerHour
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col text-white">
+                                    Miss Distance In Miles: @item.MissDistanceInMiles
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col text-white">
+                                    Is Potentially Hazardous Asteroid: @item.IsPotentiallyHazardousAsteroid
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col text-white">
+                                    Is Sentry Object: @item.IsSentryObject
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col text-white">
+                                    Close Approach Date: @item.CloseApproachDate
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="col text-white">
+                                    Orbiting Body: @item.OrbitingBody
+                                    <div class="w-100"></div>
+                                    --------------------------
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

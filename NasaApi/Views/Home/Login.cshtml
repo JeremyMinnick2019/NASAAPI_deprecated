@@ -1,0 +1,48 @@
+﻿
+<style>
+    .login-card {
+        width: 45%;
+        height: 70%;
+    }
+</style>
+
+<div class="login-card mt-5 w-25">
+    <div class="card">
+        <div class="card-header nav-dark text-white">
+            Login
+        </div>
+        <div class="card-body body-dark">
+            <div class="form-group">
+                <label class="text-white" for="APIKEY">NASA API Key</label>
+                <input class="form-control" id="APIKEY" placeholder="Enter API Key">
+                <button id="Submit" type="submit" class="btn btn-light mt-2 mb-4">Submit</button>
+                <small class="form-text text-white">If you don't have an API Key you go here: <a href="https://api.nasa.gov/" target="_blank">https://api.nasa.gov/</a></small>
+                <small class="form-text text-white">NOTE: You wont be able to use the rest of the site until you input your key.</small>
+                <small class="form-text text-white">NOT RECOMMENDED: You can use "DEMO_KEY". However it has a hourly limit of 30 calls and a daily limit of 50 calls.</small>
+                <small class="form-text text-white">A real key will give 1000 calls a hour and there's no daily limit.</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    document.getElementById("main").style = "display:flex; justify-content: center";
+
+    $("#Submit").click(function () {
+        var APIKey = document.getElementById("APIKEY").value
+
+        $.get('@Url.Action("LoginVerification", "Home")', { APIKey: APIKey }, function (response) {
+            console.log(response.response);
+            if (response.response) {
+                window.location.href = '@Url.Action("index", "Home")';
+            }
+            else {
+                alert("Invailed key please try again.");
+            }
+
+
+        });
+    });
+</script>

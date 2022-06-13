@@ -1,0 +1,535 @@
+﻿<style>
+    .PhotoNavButtons{
+        height: 3rem;
+        width: 3rem;
+        cursor: pointer;
+    }
+    .PhotoBodyWidth{
+        width: 90%;
+    }
+</style>
+
+
+<form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="form-group">
+                    <label class="text-white" id="RequiredRover" for="RoverDropDown">Rover Name *Required</label>
+                    <button class="btn btn-light dropdown-toggle w-100" type="button" id="RoverDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Rover
+                    </button>
+                    <div class="dropdown-menu" id="RoverName" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" id="CuriosityOption" href="#">Curiosity</a>
+                        <a class="dropdown-item" id="OpportunityOption" href="#">Opportunity</a>
+                        <a class="dropdown-item" id="SpiritOption" href="#">Spirit</a>
+                        <a class="dropdown-item" id="PerseveranceOption" href="#">Perseverance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label class="text-white" for="Camera">Camera</label>
+                    <button class="btn btn-light dropdown-toggle w-100" type="button" id="CameraDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Camera Name
+                    </button>
+                    <div class="dropdown-menu" id="RoverName" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" style="display: none" id="FHAZOption" href="#">FHAZ</a>
+                        <a class="dropdown-item" style="display: none" id="RHAZOption" href="#">RHAZ</a>
+                        <a class="dropdown-item" style="display: none" id="MASTOption" href="#">MAST</a>
+                        <a class="dropdown-item" style="display: none" id="CHEMCAMOption" href="#">CHEMCAM</a>
+                        <a class="dropdown-item" style="display: none" id="MAHLIOption" href="#">MAHLI</a>
+                        <a class="dropdown-item" style="display: none" id="MARDIOption" href="#">MARDI</a>
+                        <a class="dropdown-item" style="display: none" id="NAVCAMOption" href="#">NAVCAM</a>
+                        <a class="dropdown-item" style="display: none" id="PANCAMOption" href="#">PANCAM</a>
+                        <a class="dropdown-item" style="display: none" id="MINITESOption" href="#">MINITES</a>
+
+                        <a class="dropdown-item" style="display: none" id="EDL_RUCAMOption" href="#">EDL_RUCAM</a>
+                        <a class="dropdown-item" style="display: none" id="EDL_RDCAMOption" href="#">EDL_RDCAM</a>
+                        <a class="dropdown-item" style="display: none" id="EDL_DDCAMOption" href="#">EDL_DDCAM</a>
+                        <a class="dropdown-item" style="display: none" id="EDL_PUCAM1Option" href="#">EDL_PUCAM1</a>
+                        <a class="dropdown-item" style="display: none" id="EDL_PUCAM2Option" href="#">EDL_PUCAM2</a>
+                        <a class="dropdown-item" style="display: none" id="NAVCAM_LEFTOption" href="#">NAVCAM_LEFT</a>
+                        <a class="dropdown-item" style="display: none" id="NAVCAM_RIGHTOption" href="#">NAVCAM_RIGHT</a>
+                        <a class="dropdown-item" style="display: none" id="MCZ_RIGHTOption" href="#">MCZ_RIGHT</a>
+                        <a class="dropdown-item" style="display: none" id="MCZ_LEFTOption" href="#">MCZ_LEFT</a>
+                        <a class="dropdown-item" style="display: none" id="FRONT_HAZCAM_LEFT_AOption" href="#">FRONT_HAZCAM_LEFT_A</a>
+                        <a class="dropdown-item" style="display: none" id="FRONT_HAZCAM_RIGHT_AOption" href="#">FRONT_HAZCAM_RIGHT_A</a>
+                        <a class="dropdown-item" style="display: none" id="REAR_HAZCAM_LEFTOption" href="#">REAR_HAZCAM_LEFT</a>
+                        <a class="dropdown-item" style="display: none" id="REAR_HAZCAM_RIGHTOption" href="#">REAR_HAZCAM_RIGHT</a>
+                        <a class="dropdown-item" style="display: none" id="SKYCAMOption" href="#">SKYCAM</a>
+                        <a class="dropdown-item" style="display: none" id="SHERLOC_WATSONOption" href="#">SHERLOC_WATSON</a>
+
+                        <a class="dropdown-item" id="Clear" href="#">Clear Selection</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-4">
+                <div class="form-group">
+                    <div class="custom-control custom-switch Margin-Bottom-For-Toggle">
+                        <input type="checkbox" class="custom-control-input" id="ToggleEarth">
+                        <label class="custom-control-label" for="ToggleEarth"><span class="text-white">Sol \ Earth Date Toggle</span></label>
+                    </div>
+                    <div id="MarsDays">
+                        @*<label class="text-white" for="Sol">Sol Date</label>*@
+                        <input class="form-control w-100" id="Sol" placeholder="Enter Sol">
+                    </div>
+
+                    <div id="EarthDays" class="form-group" style="display: none">
+                        @*<label class="control-label"><span class="text-white">Earth Date</span></label>*@
+                        <input id="datepicker" type="text" class="form-control" placeholder="Click for Calender" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+@*                    <label class="text-white" for="Page">Page</label>
+                    <input class="form-control w-100" id="Page" placeholder="Enter Page">*@
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-4">
+                <button type="button" id="Submit" class="btn btn-light">Submit</button>
+            </div>
+            <div class="col-4">
+                @*Here so the submit button is on the left*@
+            </div>
+
+        </div>
+
+    </div>
+</form>
+
+<div class="w-100 d-flex justify-content-center">
+    <div class="card PhotoBodyWidth">
+            <div class="card-header nav-dark text-white">
+                Page <span id="CurrentPage"></span>
+            </div>
+        <div id="PhotoArea" class="card-body body-dark">
+        </div>
+        <div id="PhotoNav" class="w-100 d-flex justify-content-start nav-dark">
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('1')">
+        <div class="card-body">
+        1
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('2')">
+        <div class="card-body">
+        2
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('3')">
+        <div class="card-body">
+        3
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('4')">
+        <div class="card-body">
+        4
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('5')">
+        <div class="card-body">
+        5
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('6')">
+        <div class="card-body">
+        6
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('7')">
+        <div class="card-body">
+        7
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('8')">
+        <div class="card-body">
+        8
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('9')">
+        <div class="card-body">
+        9
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('10')">
+        <div class="card-body">
+        10
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('11')">
+        <div class="card-body">
+        11
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('12')">
+        <div class="card-body">
+        12
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('13')">
+        <div class="card-body">
+        13
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('14')">
+        <div class="card-body">
+        14
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('15')">
+        <div class="card-body">
+        15
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('16')">
+        <div class="card-body">
+        16
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('17')">
+        <div class="card-body">
+        17
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('18')">
+        <div class="card-body">
+        18
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('19')">
+        <div class="card-body">
+        19
+        </div>
+    </div>
+    <div class="card PhotoNavButtons d-flex justify-content-center m-2 border-light" onclick="ClickSubmit('20')">
+        <div class="card-body">
+        20
+        </div>
+    </div>
+  </div>
+    </div>
+</div>
+
+<script>
+
+    var Page = "1"
+
+    var isSol = true;
+
+        $(function () {
+            $("#datepicker").datepicker();
+         });
+    //this is wrong dont call directly
+    //document.getElementById("CuriosityOption").addEventListener("click", UpdateDropDown("Curiosity"));
+
+    //------------------------------------ Rover Names -------------------------------------------------------
+
+    document.getElementById("CuriosityOption").addEventListener("click", function() {
+        UpdateRoverDropDown("Curiosity")
+        CuriosityCams()
+
+    });
+
+    document.getElementById("OpportunityOption").addEventListener("click", function() {
+        UpdateRoverDropDown("Opportunity")
+        SpiritOpportunityCams()
+
+    });
+
+    document.getElementById("SpiritOption").addEventListener("click", function() {
+        UpdateRoverDropDown("Spirit")
+        SpiritOpportunityCams()
+
+
+    });
+
+    document.getElementById("PerseveranceOption").addEventListener("click", function () {
+        UpdateRoverDropDown("Perseverance")
+        PerseveranceCams()
+    });
+
+    function CuriosityCams() {
+        document.getElementById("CameraDropDown").innerHTML = "Select Camera Name"
+        document.getElementById("PANCAMOption").style.display = "none"
+        document.getElementById("MINITESOption").style.display = "none"
+        document.getElementById("EDL_RUCAMOption").style.display = "none"
+        document.getElementById("EDL_RDCAMOption").style.display = "none"
+        document.getElementById("EDL_DDCAMOption").style.display = "none"
+        document.getElementById("EDL_PUCAM1Option").style.display = "none"
+        document.getElementById("EDL_PUCAM2Option").style.display = "none"
+        document.getElementById("NAVCAM_LEFTOption").style.display = "none"
+        document.getElementById("NAVCAM_RIGHTOption").style.display = "none"
+        document.getElementById("MCZ_RIGHTOption").style.display = "none"
+        document.getElementById("MCZ_LEFTOption").style.display = "none"
+        document.getElementById("FRONT_HAZCAM_LEFT_AOption").style.display = "none"
+        document.getElementById("FRONT_HAZCAM_RIGHT_AOption").style.display = "none"
+        document.getElementById("REAR_HAZCAM_LEFTOption").style.display = "none"
+        document.getElementById("REAR_HAZCAM_RIGHTOption").style.display = "none"
+        document.getElementById("SKYCAMOption").style.display = "none"
+        document.getElementById("SHERLOC_WATSONOption").style.display = "none"
+
+        document.getElementById("FHAZOption").style.display = "Block"
+        document.getElementById("RHAZOption").style.display = "Block"
+        document.getElementById("MASTOption").style.display = "Block"
+        document.getElementById("CHEMCAMOption").style.display = "Block"
+        document.getElementById("MAHLIOption").style.display = "Block"
+        document.getElementById("MARDIOption").style.display = "Block"
+        document.getElementById("NAVCAMOption").style.display = "Block"
+    }
+
+    function PerseveranceCams() {
+        document.getElementById("CameraDropDown").innerHTML = "Select Camera Name"
+        document.getElementById("PANCAMOption").style.display = "none"
+        document.getElementById("MINITESOption").style.display = "none"
+        document.getElementById("FHAZOption").style.display = "none"
+        document.getElementById("RHAZOption").style.display = "none"
+        document.getElementById("MASTOption").style.display = "none"
+        document.getElementById("CHEMCAMOption").style.display = "none"
+        document.getElementById("MAHLIOption").style.display = "none"
+        document.getElementById("MARDIOption").style.display = "none"
+        document.getElementById("NAVCAMOption").style.display = "none"
+
+        document.getElementById("EDL_RUCAMOption").style.display = "Block"
+        document.getElementById("EDL_RDCAMOption").style.display = "Block"
+        document.getElementById("EDL_DDCAMOption").style.display = "Block"
+        document.getElementById("EDL_PUCAM1Option").style.display = "Block"
+        document.getElementById("EDL_PUCAM2Option").style.display = "Block"
+        document.getElementById("NAVCAM_LEFTOption").style.display = "Block"
+        document.getElementById("NAVCAM_RIGHTOption").style.display = "Block"
+        document.getElementById("MCZ_RIGHTOption").style.display = "Block"
+        document.getElementById("MCZ_LEFTOption").style.display = "Block"
+        document.getElementById("FRONT_HAZCAM_LEFT_AOption").style.display = "Block"
+        document.getElementById("FRONT_HAZCAM_RIGHT_AOption").style.display = "Block"
+        document.getElementById("REAR_HAZCAM_LEFTOption").style.display = "Block"
+        document.getElementById("REAR_HAZCAM_RIGHTOption").style.display = "Block"
+        document.getElementById("SKYCAMOption").style.display = "Block"
+        document.getElementById("SHERLOC_WATSONOption").style.display = "Block"
+
+
+    }
+
+    function SpiritOpportunityCams() {
+        document.getElementById("CameraDropDown").innerHTML = "Select Camera Name"
+        document.getElementById("MASTOption").style.display = "none"
+        document.getElementById("CHEMCAMOption").style.display = "none"
+        document.getElementById("MAHLIOption").style.display = "none"
+        document.getElementById("MARDIOption").style.display = "none"
+        document.getElementById("EDL_RUCAMOption").style.display = "none"
+        document.getElementById("EDL_RDCAMOption").style.display = "none"
+        document.getElementById("EDL_DDCAMOption").style.display = "none"
+        document.getElementById("EDL_PUCAM1Option").style.display = "none"
+        document.getElementById("EDL_PUCAM2Option").style.display = "none"
+        document.getElementById("NAVCAM_LEFTOption").style.display = "none"
+        document.getElementById("NAVCAM_RIGHTOption").style.display = "none"
+        document.getElementById("MCZ_RIGHTOption").style.display = "none"
+        document.getElementById("MCZ_LEFTOption").style.display = "none"
+        document.getElementById("FRONT_HAZCAM_LEFT_AOption").style.display = "none"
+        document.getElementById("FRONT_HAZCAM_RIGHT_AOption").style.display = "none"
+        document.getElementById("REAR_HAZCAM_LEFTOption").style.display = "none"
+        document.getElementById("REAR_HAZCAM_RIGHTOption").style.display = "none"
+        document.getElementById("SKYCAMOption").style.display = "none"
+        document.getElementById("SHERLOC_WATSONOption").style.display = "none"
+
+        document.getElementById("FHAZOption").style.display = "Block"
+        document.getElementById("RHAZOption").style.display = "Block"
+        document.getElementById("NAVCAMOption").style.display = "Block"
+        document.getElementById("PANCAMOption").style.display = "Block"
+        document.getElementById("MINITESOption").style.display = "Block"
+    }
+
+    function UpdateRoverDropDown(RoverName) {
+        document.getElementById("RoverDropDown").innerHTML = RoverName;
+    }
+
+    //------------------------------------ Camera Names -------------------------------------------------------
+
+    document.getElementById("FHAZOption").addEventListener("click", function () {
+        UpdateCameraDropDown("FHAZ")
+    });
+
+    document.getElementById("RHAZOption").addEventListener("click", function () {
+        UpdateCameraDropDown("RHAZ")
+    });
+
+    document.getElementById("MASTOption").addEventListener("click", function () {
+        UpdateCameraDropDown("MAST")
+    });
+
+    document.getElementById("CHEMCAMOption").addEventListener("click", function () {
+        UpdateCameraDropDown("CHEMCAM")
+    });
+
+    document.getElementById("MAHLIOption").addEventListener("click", function () {
+        UpdateCameraDropDown("MAHLI")
+    });
+
+    document.getElementById("MARDIOption").addEventListener("click", function () {
+        UpdateCameraDropDown("MARDI")
+    });
+    document.getElementById("NAVCAMOption").addEventListener("click", function () {
+        UpdateCameraDropDown("NAVCAM")
+    });
+
+    document.getElementById("PANCAMOption").addEventListener("click", function () {
+        UpdateCameraDropDown("PANCAM")
+    });
+
+    document.getElementById("MINITESOption").addEventListener("click", function () {
+        UpdateCameraDropDown("MINITES")
+    });
+
+     document.getElementById("EDL_RUCAMOption").addEventListener("click", function () {
+        UpdateCameraDropDown("EDL_RUCAM")
+    });
+    
+     document.getElementById("EDL_RDCAMOption").addEventListener("click", function () {
+        UpdateCameraDropDown("EDL_RDCAM")
+    });
+    
+     document.getElementById("EDL_DDCAMOption").addEventListener("click", function () {
+        UpdateCameraDropDown("EDL_DDCAM")
+    });
+    
+     document.getElementById("EDL_PUCAM1Option").addEventListener("click", function () {
+        UpdateCameraDropDown("EDL_PUCAM1")
+    });
+    
+     document.getElementById("EDL_PUCAM2Option").addEventListener("click", function () {
+        UpdateCameraDropDown("EDL_PUCAM2")
+    });
+    
+     document.getElementById("NAVCAM_LEFTOption").addEventListener("click", function () {
+        UpdateCameraDropDown("NAVCAM_LEFT")
+    });
+    
+     document.getElementById("NAVCAM_RIGHTOption").addEventListener("click", function () {
+        UpdateCameraDropDown("NAVCAM_RIGHT")
+    });
+    
+     document.getElementById("MCZ_RIGHTOption").addEventListener("click", function () {
+        UpdateCameraDropDown("MCZ_RIGHT")
+    });
+    
+     document.getElementById("MCZ_LEFTOption").addEventListener("click", function () {
+        UpdateCameraDropDown("MCZ_LEFT")
+    });
+    
+     document.getElementById("FRONT_HAZCAM_LEFT_AOption").addEventListener("click", function () {
+        UpdateCameraDropDown("FRONT_HAZCAM_LEFT_A")
+    });
+    
+     document.getElementById("FRONT_HAZCAM_RIGHT_AOption").addEventListener("click", function () {
+        UpdateCameraDropDown("FRONT_HAZCAM_RIGHT_A")
+    });
+    
+     document.getElementById("REAR_HAZCAM_LEFTOption").addEventListener("click", function () {
+        UpdateCameraDropDown("REAR_HAZCAM_LEFT")
+    });
+    
+     document.getElementById("REAR_HAZCAM_RIGHTOption").addEventListener("click", function () {
+        UpdateCameraDropDown("REAR_HAZCAM_RIGHT")
+    });
+    
+     document.getElementById("SKYCAMOption").addEventListener("click", function () {
+        UpdateCameraDropDown("SKYCAM")
+    });
+    
+     document.getElementById("SHERLOC_WATSONOption").addEventListener("click", function () {
+        UpdateCameraDropDown("SHERLOC_WATSON")
+    });
+
+    document.getElementById("Clear").addEventListener("click", function () {
+        UpdateCameraDropDown("Select Camera Name")
+    });
+
+   
+
+    function UpdateCameraDropDown(Camera) {
+        document.getElementById("CameraDropDown").innerHTML = Camera;
+    }
+
+    //------------------------------------ Earth/Sol Toggle -------------------------------------------------------
+
+    document.getElementById("ToggleEarth").addEventListener("click", function () {
+        ToggleEarthSol();
+    });
+
+    function ToggleEarthSol() {
+        if (isSol) {
+            document.getElementById("MarsDays").style.display = "none"
+            document.getElementById("EarthDays").style.display = "block"
+            isSol = false;
+        }
+        else {
+            document.getElementById("MarsDays").style.display = "Block"
+            document.getElementById("EarthDays").style.display = "None"
+            isSol = true;
+        }
+    }
+
+    function ClickSubmit(PageNumber)
+    {
+        Page = PageNumber
+
+        GetPhotos();
+    }
+
+        document.getElementById("Submit").addEventListener("click", function () {
+            Page = "1"
+        GetPhotos();
+    });
+
+    function GetPhotos()
+    {
+
+        var Rover = document.getElementById("RoverDropDown").innerHTML.trim();
+        console.log(Rover);
+
+        if (Rover == "Select Rover") {
+            document.getElementById("RequiredRover").classList.remove("text-white");
+            document.getElementById("RequiredRover").classList.add("Required-Red");
+            return;
+        }
+
+        var Camera = document.getElementById("CameraDropDown").innerHTML.trim();
+
+        if (Camera == "Select Camera Name") {
+            Camera = null;
+        }
+
+        console.log(Camera);
+
+        var Sol = "";
+        var Earth = "";
+
+        if (isSol) {
+            var Sol = document.getElementById("Sol").value.trim();
+            console.log(Sol);
+        }
+        else {
+            var Earth = document.getElementById("datepicker").value.trim();
+            console.log(Earth);
+        }
+
+        console.log(Page);
+
+        if(Page == "")
+        {
+            Page = "1"
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("ReturnedPhotos", "Mars")",
+            data: { Rover: Rover, Camera: Camera, Sol: Sol, EarthDay: Earth, Page: Page, IsSol: isSol },
+            success: function (data) {
+                document.getElementById("PhotoArea").innerHTML = "";
+                document.getElementById("CurrentPage").innerHTML = Page;
+                $("#PhotoArea").html(data);
+            }
+        });
+    }
+</script>

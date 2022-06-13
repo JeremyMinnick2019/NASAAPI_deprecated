@@ -1,0 +1,15 @@
+﻿@model List<MarsPhotoModel>
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {
+                var base64 = Convert.ToBase64String(item.PhotoByteArray);
+                var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                <div class="col-1 pt-1 pb-1" style="max-width:100%">
+                    <a href="@item.PhotoLink" target="_blank">
+                        <img class="border-radius" style="width: 275px; height: 275px; overflow:hidden;" src="@imgSrc">
+                    </a>
+                </div>
+            }
+        </div>
+
+
